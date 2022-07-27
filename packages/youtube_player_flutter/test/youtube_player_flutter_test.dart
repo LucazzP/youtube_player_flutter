@@ -4,10 +4,10 @@ import 'dart:ui' show window;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:youtube_player_flutter/src/player/youtube_player.dart';
-import 'package:youtube_player_flutter/src/utils/youtube_player_controller.dart';
-import 'package:youtube_player_flutter/src/utils/youtube_player_flags.dart';
-import 'package:youtube_player_flutter/src/widgets/widgets.dart';
+import 'package:youtube_player_flutter_quill/src/player/youtube_player.dart';
+import 'package:youtube_player_flutter_quill/src/utils/youtube_player_controller.dart';
+import 'package:youtube_player_flutter_quill/src/utils/youtube_player_flags.dart';
+import 'package:youtube_player_flutter_quill/src/widgets/widgets.dart';
 
 Widget buildPlayer({
   required YoutubePlayerController controller,

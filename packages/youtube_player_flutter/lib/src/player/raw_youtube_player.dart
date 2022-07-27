@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_inappwebview_quill/flutter_inappwebview_quill.dart';
 
 import '../enums/player_state.dart';
 import '../utils/youtube_meta_data.dart';
@@ -16,7 +16,7 @@ class RawYoutubePlayer extends StatefulWidget {
   /// Sets [Key] as an identification to underlying web view associated to the player.
   final Key? key;
 
-  /// {@macro youtube_player_flutter.onEnded}
+  /// {@macro youtube_player_flutter_quill.onEnded}
   final void Function(YoutubeMetaData metaData)? onEnded;
 
   /// Creates a [RawYoutubePlayer] widget.
@@ -284,18 +284,18 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
                         'end': ${controller!.flags.endAt}
                     },
                     events: {
-                        onReady: function(event) { window.flutter_inappwebview.callHandler('Ready'); },
+                        onReady: function(event) { window.flutter_inappwebview_quill.callHandler('Ready'); },
                         onStateChange: function(event) { sendPlayerStateChange(event.data); },
-                        onPlaybackQualityChange: function(event) { window.flutter_inappwebview.callHandler('PlaybackQualityChange', event.data); },
-                        onPlaybackRateChange: function(event) { window.flutter_inappwebview.callHandler('PlaybackRateChange', event.data); },
-                        onError: function(error) { window.flutter_inappwebview.callHandler('Errors', error.data); }
+                        onPlaybackQualityChange: function(event) { window.flutter_inappwebview_quill.callHandler('PlaybackQualityChange', event.data); },
+                        onPlaybackRateChange: function(event) { window.flutter_inappwebview_quill.callHandler('PlaybackRateChange', event.data); },
+                        onError: function(error) { window.flutter_inappwebview_quill.callHandler('Errors', error.data); }
                     },
                 });
             }
 
             function sendPlayerStateChange(playerState) {
                 clearTimeout(timerId);
-                window.flutter_inappwebview.callHandler('StateChange', playerState);
+                window.flutter_inappwebview_quill.callHandler('StateChange', playerState);
                 if (playerState == 1) {
                     startSendCurrentTimeInterval();
                     sendVideoData(player);
@@ -309,12 +309,12 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
                     'author': player.getVideoData().author,
                     'videoId': player.getVideoData().video_id
                 };
-                window.flutter_inappwebview.callHandler('VideoData', videoData);
+                window.flutter_inappwebview_quill.callHandler('VideoData', videoData);
             }
 
             function startSendCurrentTimeInterval() {
                 timerId = setInterval(function () {
-                    window.flutter_inappwebview.callHandler('VideoTime', player.getCurrentTime(), player.getVideoLoadedFraction());
+                    window.flutter_inappwebview_quill.callHandler('VideoTime', player.getCurrentTime(), player.getVideoLoadedFraction());
                 }, 100);
             }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_flutter_quill/youtube_player_flutter_quill.dart';
 
 /// Creates list of video players
 class VideoList extends StatefulWidget {

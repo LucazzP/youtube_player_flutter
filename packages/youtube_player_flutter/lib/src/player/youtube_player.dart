@@ -45,85 +45,85 @@ class YoutubePlayer extends StatefulWidget {
   /// A [YoutubePlayerController] to control the player.
   final YoutubePlayerController controller;
 
-  /// {@template youtube_player_flutter.width}
+  /// {@template youtube_player_flutter_quill.width}
   /// Defines the width of the player.
   ///
   /// Default is devices's width.
   /// {@endtemplate}
   final double? width;
 
-  /// {@template youtube_player_flutter.aspectRatio}
+  /// {@template youtube_player_flutter_quill.aspectRatio}
   /// Defines the aspect ratio to be assigned to the player. This property along with [width] calculates the player size.
   ///
   /// Default is 16 / 9.
   /// {@endtemplate}
   final double aspectRatio;
 
-  /// {@template youtube_player_flutter.controlsTimeOut}
+  /// {@template youtube_player_flutter_quill.controlsTimeOut}
   /// The duration for which controls in the player will be visible.
   ///
   /// Default is 3 seconds.
   /// {@endtemplate}
   final Duration controlsTimeOut;
 
-  /// {@template youtube_player_flutter.bufferIndicator}
+  /// {@template youtube_player_flutter_quill.bufferIndicator}
   /// Overrides the default buffering indicator for the player.
   /// {@endtemplate}
   final Widget? bufferIndicator;
 
-  /// {@template youtube_player_flutter.progressColors}
+  /// {@template youtube_player_flutter_quill.progressColors}
   /// Overrides default colors of the progress bar, takes [ProgressColors].
   /// {@endtemplate}
   final ProgressBarColors progressColors;
 
-  /// {@template youtube_player_flutter.progressIndicatorColor}
+  /// {@template youtube_player_flutter_quill.progressIndicatorColor}
   /// Overrides default color of progress indicator shown below the player(if enabled).
   /// {@endtemplate}
   final Color progressIndicatorColor;
 
-  /// {@template youtube_player_flutter.onReady}
+  /// {@template youtube_player_flutter_quill.onReady}
   /// Called when player is ready to perform control methods like:
   /// play(), pause(), load(), cue(), etc.
   /// {@endtemplate}
   final VoidCallback? onReady;
 
-  /// {@template youtube_player_flutter.onEnded}
+  /// {@template youtube_player_flutter_quill.onEnded}
   /// Called when player had ended playing a video.
   ///
   /// Returns [YoutubeMetaData] for the video that has just ended playing.
   /// {@endtemplate}
   final void Function(YoutubeMetaData metaData)? onEnded;
 
-  /// {@template youtube_player_flutter.liveUIColor}
+  /// {@template youtube_player_flutter_quill.liveUIColor}
   /// Overrides color of Live UI when enabled.
   /// {@endtemplate}
   final Color liveUIColor;
 
-  /// {@template youtube_player_flutter.topActions}
+  /// {@template youtube_player_flutter_quill.topActions}
   /// Adds custom top bar widgets.
   /// {@endtemplate}
   final List<Widget>? topActions;
 
-  /// {@template youtube_player_flutter.bottomActions}
+  /// {@template youtube_player_flutter_quill.bottomActions}
   /// Adds custom bottom bar widgets.
   /// {@endtemplate}
   final List<Widget>? bottomActions;
 
-  /// {@template youtube_player_flutter.actionsPadding}
+  /// {@template youtube_player_flutter_quill.actionsPadding}
   /// Defines padding for [topActions] and [bottomActions].
   ///
   /// Default is EdgeInsets.all(8.0).
   /// {@endtemplate}
   final EdgeInsetsGeometry actionsPadding;
 
-  /// {@template youtube_player_flutter.thumbnail}
+  /// {@template youtube_player_flutter_quill.thumbnail}
   /// Thumbnail to show when player is loading.
   ///
   /// If not set, default thumbnail of the video is shown.
   /// {@endtemplate}
   final Widget? thumbnail;
 
-  /// {@template youtube_player_flutter.showVideoProgressIndicator}
+  /// {@template youtube_player_flutter_quill.showVideoProgressIndicator}
   /// Defines whether to show or hide progress indicator below the player.
   ///
   /// Default is false.

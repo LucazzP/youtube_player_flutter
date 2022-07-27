@@ -1,3 +1,12 @@
+## 8.2.2
+- bumped flutter_inappwebview_quill
+
+## 8.2.1
+* Attempt to fix undefined main class
+
+## 8.2.0
+* Updated YouTube Player Flutter to work with Xcode 14 and iOS 16 betas
+
 ## 8.1.0
 * Upgraded minimum flutter version to `3.0.0`
 * Upgraded example app
