@@ -1,5 +1,5 @@
 name: youtube_player_flutter_example
-description: Demonstrates how to use the youtube_player_flutter plugin.
+description: Demonstrates how to use the youtube_player_flutter_quill plugin.
 version: 7.0.0
 publish_to: 'none'
 
@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  youtube_player_flutter:
+  youtube_player_flutter_quill:
     path: ../
 
 dev_dependencies:

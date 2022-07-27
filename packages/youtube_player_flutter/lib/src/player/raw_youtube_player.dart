@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview_quill/flutter_inappwebview_quill.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../enums/player_state.dart';
 import '../utils/youtube_meta_data.dart';
@@ -29,8 +29,7 @@ class RawYoutubePlayer extends StatefulWidget {
   _RawYoutubePlayerState createState() => _RawYoutubePlayerState();
 }
 
-class _RawYoutubePlayerState extends State<RawYoutubePlayer>
-    with WidgetsBindingObserver {
+class _RawYoutubePlayerState extends State<RawYoutubePlayer> with WidgetsBindingObserver {
   YoutubePlayerController? controller;
   PlayerState? _cachedPlayerState;
   bool _isPlayerReady = false;
@@ -52,8 +51,7 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        if (_cachedPlayerState != null &&
-            _cachedPlayerState == PlayerState.playing) {
+        if (_cachedPlayerState != null && _cachedPlayerState == PlayerState.playing) {
           controller?.play();
         }
         break;
@@ -178,8 +176,7 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
               handlerName: 'PlaybackQualityChange',
               callback: (args) {
                 controller!.updateValue(
-                  controller!.value
-                      .copyWith(playbackQuality: args.first as String),
+                  controller!.value.copyWith(playbackQuality: args.first as String),
                 );
               },
             )
@@ -204,8 +201,7 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
               handlerName: 'VideoData',
               callback: (args) {
                 controller!.updateValue(
-                  controller!.value.copyWith(
-                      metaData: YoutubeMetaData.fromRawData(args.first)),
+                  controller!.value.copyWith(metaData: YoutubeMetaData.fromRawData(args.first)),
                 );
               },
             )
@@ -284,18 +280,18 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
                         'end': ${controller!.flags.endAt}
                     },
                     events: {
-                        onReady: function(event) { window.flutter_inappwebview_quill.callHandler('Ready'); },
+                        onReady: function(event) { window.flutter_inappwebview.callHandler('Ready'); },
                         onStateChange: function(event) { sendPlayerStateChange(event.data); },
-                        onPlaybackQualityChange: function(event) { window.flutter_inappwebview_quill.callHandler('PlaybackQualityChange', event.data); },
-                        onPlaybackRateChange: function(event) { window.flutter_inappwebview_quill.callHandler('PlaybackRateChange', event.data); },
-                        onError: function(error) { window.flutter_inappwebview_quill.callHandler('Errors', error.data); }
+                        onPlaybackQualityChange: function(event) { window.flutter_inappwebview.callHandler('PlaybackQualityChange', event.data); },
+                        onPlaybackRateChange: function(event) { window.flutter_inappwebview.callHandler('PlaybackRateChange', event.data); },
+                        onError: function(error) { window.flutter_inappwebview.callHandler('Errors', error.data); }
                     },
                 });
             }
 
             function sendPlayerStateChange(playerState) {
                 clearTimeout(timerId);
-                window.flutter_inappwebview_quill.callHandler('StateChange', playerState);
+                window.flutter_inappwebview.callHandler('StateChange', playerState);
                 if (playerState == 1) {
                     startSendCurrentTimeInterval();
                     sendVideoData(player);
@@ -309,12 +305,12 @@ class _RawYoutubePlayerState extends State<RawYoutubePlayer>
                     'author': player.getVideoData().author,
                     'videoId': player.getVideoData().video_id
                 };
-                window.flutter_inappwebview_quill.callHandler('VideoData', videoData);
+                window.flutter_inappwebview.callHandler('VideoData', videoData);
             }
 
             function startSendCurrentTimeInterval() {
                 timerId = setInterval(function () {
-                    window.flutter_inappwebview_quill.callHandler('VideoTime', player.getCurrentTime(), player.getVideoLoadedFraction());
+                    window.flutter_inappwebview.callHandler('VideoTime', player.getCurrentTime(), player.getVideoLoadedFraction());
                 }, 100);
             }
 

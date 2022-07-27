@@ -4,7 +4,7 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_inappwebview_quill/flutter_inappwebview_quill.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../enums/playback_rate.dart';
 import '../enums/player_state.dart';
@@ -163,9 +163,7 @@ class YoutubePlayerController extends ValueNotifier<YoutubePlayerValue> {
 
   /// Finds [YoutubePlayerController] in the provided context.
   static YoutubePlayerController? of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<InheritedYoutubePlayer>()
-        ?.controller;
+    return context.dependOnInheritedWidgetOfExactType<InheritedYoutubePlayer>()?.controller;
   }
 
   _callMethod(String methodString) {
@@ -245,14 +243,13 @@ class YoutubePlayerController extends ValueNotifier<YoutubePlayerValue> {
   /// if the seconds parameter specifies a time outside of the currently buffered video data.
   /// Default allowSeekAhead = true
   void seekTo(Duration position, {bool allowSeekAhead = true}) {
-    _callMethod('seekTo(${position.inMilliseconds/1000},$allowSeekAhead)');
+    _callMethod('seekTo(${position.inMilliseconds / 1000},$allowSeekAhead)');
     play();
     updateValue(value.copyWith(position: position));
   }
 
   /// Sets the size in pixels of the player.
-  void setSize(Size size) =>
-      _callMethod('setSize(${size.width}, ${size.height})');
+  void setSize(Size size) => _callMethod('setSize(${size.width}, ${size.height})');
 
   /// Fits the video to screen width.
   void fitWidth(Size screenSize) {
